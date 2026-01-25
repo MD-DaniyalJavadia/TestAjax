@@ -1,0 +1,122 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\TestAjax-master\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A173A074-C2DC-4FE7-8EED-68B464EFD875}|TestAjax.csproj|d:\\testajax-master\\views\\ledger\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A173A074-C2DC-4FE7-8EED-68B464EFD875}|TestAjax.csproj|solutionrelative:views\\ledger\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A173A074-C2DC-4FE7-8EED-68B464EFD875}|TestAjax.csproj|d:\\testajax-master\\views\\ledger\\transactionentry.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A173A074-C2DC-4FE7-8EED-68B464EFD875}|TestAjax.csproj|solutionrelative:views\\ledger\\transactionentry.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A173A074-C2DC-4FE7-8EED-68B464EFD875}|TestAjax.csproj|d:\\testajax-master\\views\\ledger\\ledger.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A173A074-C2DC-4FE7-8EED-68B464EFD875}|TestAjax.csproj|solutionrelative:views\\ledger\\ledger.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A173A074-C2DC-4FE7-8EED-68B464EFD875}|TestAjax.csproj|d:\\testajax-master\\controllers\\ledgercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A173A074-C2DC-4FE7-8EED-68B464EFD875}|TestAjax.csproj|solutionrelative:controllers\\ledgercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A173A074-C2DC-4FE7-8EED-68B464EFD875}|TestAjax.csproj|d:\\testajax-master\\wwwroot\\assets\\js\\demo.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A173A074-C2DC-4FE7-8EED-68B464EFD875}|TestAjax.csproj|solutionrelative:wwwroot\\assets\\js\\demo.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A173A074-C2DC-4FE7-8EED-68B464EFD875}|TestAjax.csproj|d:\\testajax-master\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A173A074-C2DC-4FE7-8EED-68B464EFD875}|TestAjax.csproj|solutionrelative:views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "TransactionEntry.cshtml",
+              "DocumentMoniker": "D:\\TestAjax-master\\Views\\Ledger\\TransactionEntry.cshtml",
+              "RelativeDocumentMoniker": "Views\\Ledger\\TransactionEntry.cshtml",
+              "ToolTip": "D:\\TestAjax-master\\Views\\Ledger\\TransactionEntry.cshtml",
+              "RelativeToolTip": "Views\\Ledger\\TransactionEntry.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-01-25T12:54:12.112Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "LedgerController.cs",
+              "DocumentMoniker": "D:\\TestAjax-master\\Controllers\\LedgerController.cs",
+              "RelativeDocumentMoniker": "Controllers\\LedgerController.cs",
+              "ToolTip": "D:\\TestAjax-master\\Controllers\\LedgerController.cs",
+              "RelativeToolTip": "Controllers\\LedgerController.cs",
+              "ViewState": "AgIAAGgAAAAAAAAAAAAgwHcAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-25T12:49:31.187Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "D:\\TestAjax-master\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "D:\\TestAjax-master\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-01-25T12:41:16.389Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "demo.js",
+              "DocumentMoniker": "D:\\TestAjax-master\\wwwroot\\assets\\js\\demo.js",
+              "RelativeDocumentMoniker": "wwwroot\\assets\\js\\demo.js",
+              "ToolTip": "D:\\TestAjax-master\\wwwroot\\assets\\js\\demo.js",
+              "RelativeToolTip": "wwwroot\\assets\\js\\demo.js",
+              "ViewState": "AgIAALkAAAAgMzMzMzMwwMgAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2026-01-25T12:39:26.629Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "index.cshtml",
+              "DocumentMoniker": "D:\\TestAjax-master\\Views\\Ledger\\index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Ledger\\index.cshtml",
+              "ToolTip": "D:\\TestAjax-master\\Views\\Ledger\\index.cshtml",
+              "RelativeToolTip": "Views\\Ledger\\index.cshtml",
+              "ViewState": "AgIAABwAAAAAzMzMzMwWwC4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-01-25T12:37:16.966Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Ledger.cshtml",
+              "DocumentMoniker": "D:\\TestAjax-master\\Views\\Ledger\\Ledger.cshtml",
+              "RelativeDocumentMoniker": "Views\\Ledger\\Ledger.cshtml",
+              "ToolTip": "D:\\TestAjax-master\\Views\\Ledger\\Ledger.cshtml",
+              "RelativeToolTip": "Views\\Ledger\\Ledger.cshtml",
+              "ViewState": "AgIAACsAAAAAAAAAAAApwDkAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-01-25T12:37:10.578Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

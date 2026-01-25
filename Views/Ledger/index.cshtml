@@ -1,0 +1,147 @@
+﻿@model TestAjax.Models.Contact
+
+@{
+    ViewData["Title"] = Model.Name;
+
+    var balance = (decimal)ViewData["Balance"];
+    var transactions = ViewData["Transactions"] as List<TestAjax.Models.Transaction>
+        ?? new List<TestAjax.Models.Transaction>();
+
+    string statusText = balance > 0 ? "I will receive"
+                      : balance < 0 ? "I will give"
+                      : "Balance settled";
+
+    string colorClass = balance > 0 ? "text-success"
+                      : balance < 0 ? "text-danger fw-bold"
+                      : "text-muted";
+
+    string displayAmount = Math.Abs(balance).ToString("N0");
+
+    // -------- WhatsApp Logic --------
+    var whatsappNumber = ViewData["WhatsAppNumber"]?.ToString();
+
+    if (!string.IsNullOrWhiteSpace(whatsappNumber))
+    {
+        whatsappNumber = whatsappNumber
+            .Replace(" ", "")
+            .Replace("-", "")
+            .Replace("(", "")
+            .Replace(")", "");
+
+        // Pakistan country code (change if required)
+        if (!whatsappNumber.StartsWith("92"))
+        {
+            whatsappNumber = "92" + whatsappNumber.TrimStart('0');
+        }
+    }
+}
+
+<!-- Alerts -->
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show">
+        @TempData["SuccessMessage"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+}
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger alert-dismissible fade show">
+        @TempData["ErrorMessage"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+}
+
+<div class="page-inner pb-4">
+
+    <!-- Header -->
+    <div class="d-flex align-items-center mb-3">
+        <a asp-controller="Contacts" asp-action="Index" class="me-3 text-dark">
+            <i class="fas fa-arrow-left fa-lg"></i>
+        </a>
+
+        <h4 class="mb-0 fw-bold">@Model.Name</h4>
+
+        <div class="ms-auto">
+            <button class="btn btn-sm btn-outline-primary me-2">
+                <i class="fas fa-download me-1"></i> DOWNLOAD PDF
+            </button>
+
+            @if (!string.IsNullOrEmpty(whatsappNumber))
+            {
+                <a href="https://wa.me/@whatsappNumber?text=@Uri.EscapeDataString($"Ledger balance Rs. {displayAmount}")"
+                   target="_blank"
+                   class="btn btn-sm btn-success"
+                   title="Chat on WhatsApp">
+                    <i class="fab fa-whatsapp me-1"></i> WhatsApp
+                </a>
+            }
+        </div>
+    </div>
+
+    <!-- Balance Card -->
+    <div class="card shadow-sm mb-4 border-0">
+        <div class="card-body text-center py-5">
+            <h6 class="text-muted mb-2">@statusText</h6>
+            <h1 class="display-4 fw-bold @colorClass">
+                Rs. @displayAmount
+            </h1>
+        </div>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="d-flex justify-content-center gap-4 mb-5">
+        <a asp-action="Add" asp-route-id="@Model.Id" asp-route-type="Received"
+           class="btn btn-success btn-lg px-5 py-3">
+            ↓ I TOOK
+        </a>
+
+        <a asp-action="Add" asp-route-id="@Model.Id" asp-route-type="Given"
+           class="btn btn-danger btn-lg px-5 py-3">
+            ↑ I GAVE
+        </a>
+    </div>
+
+    <!-- Transactions -->
+    @if (transactions.Any())
+    {
+        <div class="card shadow-sm border-0">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0">
+                    <thead class="table-light">
+                        <tr class="small text-muted">
+                            <th>Date</th>
+                            <th>Details</th>
+                            <th class="text-end">Received</th>
+                            <th class="text-end">Actions</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var t in transactions)
+                        {
+                            <tr>
+                                <td>@t.TransactionDate</td>
+                                <td>@(string.IsNullOrWhiteSpace(t.Details) ? "—" : t.Details)</td>
+                                <td class="text-end text-success">
+                                    @(t.Type == "Received" ? t.Amount.ToString("N0") : "—")
+                                </td>
+                                <td class="text-end text-danger">
+                                    @(t.Type == "Given" ? t.Amount.ToString("N0") : "—")
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="text-center py-5 text-muted">
+            <i class="far fa-file-alt fa-4x mb-3"></i>
+            <p class="lead">No transactions yet</p>
+        </div>
+    }
+</div>

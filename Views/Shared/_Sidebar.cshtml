@@ -1,0 +1,87 @@
+<div class="sidebar" data-background-color="dark">
+    <div class="sidebar-logo">
+        <div class="logo-header" data-background-color="dark">
+            <a href="@Url.Action("Index", "Home")" class="logo">
+                <img src="~/assets/img/kaiadmin/logo_light.svg" alt="navbar brand" class="navbar-brand" height="20">
+            </a>
+            <div class="nav-toggle">
+                <button class="btn btn-toggle toggle-sidebar">
+                    <i class="gg-menu-right"></i>
+                </button>
+                <button class="btn btn-toggle sidenav-toggler">
+                    <i class="gg-menu-left"></i>
+                </button>
+            </div>
+            <button class="topbar-toggler more">
+                <i class="gg-more-vertical-alt"></i>
+            </button>
+        </div>
+    </div>
+
+    <div class="sidebar-wrapper scrollbar scrollbar-inner">
+        <div class="sidebar-content">
+            <ul class="nav nav-secondary">
+                <!-- Dashboard (existing) -->
+                <li class="nav-item active">
+                    <a data-bs-toggle="collapse" href="#dashboard" class="collapsed" aria-expanded="false">
+                        <i class="fas fa-home"></i>
+                        <p>Dashboard</p>
+                        <span class="caret"></span>
+                    </a>
+                    <div class="collapse show" id="dashboard">
+                        <ul class="nav nav-collapse">
+                            <li class="active">
+                                <a href="@Url.Action("Index", "Home")">
+                                    <span class="sub-item">Dashboard 1</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+                <!-- New: Accounts Module -->
+                <li class="nav-item">
+                    <a href="@Url.Action("Index", "Contacts")">
+                        <i class="fas fa-users"></i>
+                        <p>Accounts</p>
+                    </a>
+                </li>
+
+                <!-- Other menu items (jaise aapke paas pehle the, unko yahan add kar sakte ho) -->
+                <!-- Example: -->
+                <!--
+                <li class="nav-item">
+                    <a href="@Url.Action("Index", "Ledger")">
+                        <i class="fas fa-book"></i>
+                        <p>Ledger</p>
+                    </a>
+                </li>
+                -->
+                <!-- Agar sub-menu chahiye Accounts ke andar -->
+                <!--
+                <li class="nav-item">
+                    <a data-bs-toggle="collapse" href="#accountsMenu">
+                        <i class="fas fa-users"></i>
+                        <p>Accounts</p>
+                        <span class="caret"></span>
+                    </a>
+                    <div class="collapse" id="accountsMenu">
+                        <ul class="nav nav-collapse">
+                            <li>
+                                <a href="@Url.Action("Index", "Contacts")">
+                                    <span class="sub-item">All Accounts</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("Create", "Contacts")">
+                                    <span class="sub-item">Add New Contact</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                -->
+            </ul>
+        </div>
+    </div>
+</div>

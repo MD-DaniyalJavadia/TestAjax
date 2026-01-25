@@ -1,0 +1,40 @@
+﻿@model TestAjax.Models.Contact
+
+@{
+    string transactionType = ViewBag.TransactionType ?? "Received";
+    decimal currentBalance = (decimal)ViewBag.CurrentBalance;
+    string balanceText = currentBalance > 0 ? "I will receive Rs. " + currentBalance.ToString("N0") : currentBalance < 0 ? "I will give Rs. " + Math.Abs(currentBalance).ToString("N0") : "Balance settled";
+}
+
+<div class="page-inner">
+    <div class="d-flex align-items-center mb-4">
+        <a asp-action="Index" asp-route-id="@Model.Id" class="me-3 text-dark">
+            <i class="fas fa-arrow-left fa-lg"></i>
+        </a>
+        <h4 class="mb-0">@Model.Name</h4>
+    </div>
+
+    <p class="text-muted">Current Balance: @balanceText</p>
+
+    <form asp-action="AddTransaction" method="post">
+        <input type="hidden" name="contactId" value="@Model.Id" />
+        <input type="hidden" name="type" value="@transactionType" />
+
+        <div class="mb-3">
+            <label>Amount</label>
+            <input type="number" name="amount" class="form-control" required />
+        </div>
+
+        <div class="mb-3">
+            <label>Date</label>
+            <input type="date" name="transactionDate" class="form-control" value="@DateTime.Today.ToString("yyyy-MM-dd")" />
+        </div>
+
+        <div class="mb-3">
+            <label>Details</label>
+            <textarea name="details" class="form-control"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Save</button>
+    </form>
+</div>

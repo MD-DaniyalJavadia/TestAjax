@@ -1,0 +1,30 @@
+﻿@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<div class="d-flex align-items-left align-items-md-center flex-column flex-md-row pt-2 pb-4">
+    <div>
+        <h3 class="fw-bold mb-3">Dashboard</h3>
+        <h6 class="op-7 mb-2">Free Bootstrap 5 Admin Dashboard</h6>
+    </div>
+    <div class="ms-md-auto py-2 py-md-0">
+        <a href="#" class="btn btn-label-info btn-round me-2">Manage</a>
+        <a asp-action="create" asp-controller="contacts" class="btn btn-primary btn-round">Add Customer</a>
+    </div>
+</div>
+
+<!-- Baki saare rows, cards, charts, tables exactly same as original HTML -->
+<!-- Bas image paths: src="~/assets/img/..." -->
+@section Scripts {
+    <script>
+        $('#lineChart').sparkline([102,109,120,99,110,105,115], {
+            type: 'line',
+            height: '70',
+            width: '100%',
+            lineWidth: '2',
+            lineColor: '#177dff',
+            fillColor: 'rgba(23, 125, 255, 0.14)'
+        });
+        // baki sparkline scripts
+    </script>
+}
