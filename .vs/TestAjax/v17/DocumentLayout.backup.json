@@ -1,12 +1,156 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\TestAjax-master\\",
-  "Documents": [],
+  "WorkspaceRootPath": "D:\\TestAjax\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A173A074-C2DC-4FE7-8EED-68B464EFD875}|TestAjax.csproj|d:\\testajax\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A173A074-C2DC-4FE7-8EED-68B464EFD875}|TestAjax.csproj|solutionrelative:views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A173A074-C2DC-4FE7-8EED-68B464EFD875}|TestAjax.csproj|d:\\testajax\\wwwroot\\js\\dashboards-analytics-graph.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A173A074-C2DC-4FE7-8EED-68B464EFD875}|TestAjax.csproj|solutionrelative:wwwroot\\js\\dashboards-analytics-graph.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A173A074-C2DC-4FE7-8EED-68B464EFD875}|TestAjax.csproj|d:\\testajax\\wwwroot\\js\\chart-helper.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A173A074-C2DC-4FE7-8EED-68B464EFD875}|TestAjax.csproj|solutionrelative:wwwroot\\js\\chart-helper.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A173A074-C2DC-4FE7-8EED-68B464EFD875}|TestAjax.csproj|d:\\testajax\\views\\contacts\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A173A074-C2DC-4FE7-8EED-68B464EFD875}|TestAjax.csproj|solutionrelative:views\\contacts\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A173A074-C2DC-4FE7-8EED-68B464EFD875}|TestAjax.csproj|d:\\testajax\\views\\ledger\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A173A074-C2DC-4FE7-8EED-68B464EFD875}|TestAjax.csproj|solutionrelative:views\\ledger\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A173A074-C2DC-4FE7-8EED-68B464EFD875}|TestAjax.csproj|d:\\testajax\\views\\ledger\\transactionentry.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A173A074-C2DC-4FE7-8EED-68B464EFD875}|TestAjax.csproj|solutionrelative:views\\ledger\\transactionentry.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A173A074-C2DC-4FE7-8EED-68B464EFD875}|TestAjax.csproj|d:\\testajax\\views\\ledger\\ledger.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A173A074-C2DC-4FE7-8EED-68B464EFD875}|TestAjax.csproj|solutionrelative:views\\ledger\\ledger.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A173A074-C2DC-4FE7-8EED-68B464EFD875}|TestAjax.csproj|d:\\testajax\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A173A074-C2DC-4FE7-8EED-68B464EFD875}|TestAjax.csproj|solutionrelative:controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "TransactionEntry.cshtml",
+              "DocumentMoniker": "D:\\TestAjax\\Views\\Ledger\\TransactionEntry.cshtml",
+              "RelativeDocumentMoniker": "Views\\Ledger\\TransactionEntry.cshtml",
+              "ToolTip": "D:\\TestAjax\\Views\\Ledger\\TransactionEntry.cshtml",
+              "RelativeToolTip": "Views\\Ledger\\TransactionEntry.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-01T13:57:22.604Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Ledger.cshtml",
+              "DocumentMoniker": "D:\\TestAjax\\Views\\Ledger\\Ledger.cshtml",
+              "RelativeDocumentMoniker": "Views\\Ledger\\Ledger.cshtml",
+              "ToolTip": "D:\\TestAjax\\Views\\Ledger\\Ledger.cshtml",
+              "RelativeToolTip": "Views\\Ledger\\Ledger.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-01T13:57:21.504Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "index.cshtml",
+              "DocumentMoniker": "D:\\TestAjax\\Views\\Contacts\\index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Contacts\\index.cshtml",
+              "ToolTip": "D:\\TestAjax\\Views\\Contacts\\index.cshtml",
+              "RelativeToolTip": "Views\\Contacts\\index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-01T13:56:44.44Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "chart-helper.js",
+              "DocumentMoniker": "D:\\TestAjax\\wwwroot\\js\\chart-helper.js",
+              "RelativeDocumentMoniker": "wwwroot\\js\\chart-helper.js",
+              "ToolTip": "D:\\TestAjax\\wwwroot\\js\\chart-helper.js",
+              "RelativeToolTip": "wwwroot\\js\\chart-helper.js",
+              "ViewState": "AgIAADEDAADAzMzMzMwtwEIDAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2026-02-01T13:32:52.13Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "dashboards-analytics-graph.js",
+              "DocumentMoniker": "D:\\TestAjax\\wwwroot\\js\\dashboards-analytics-graph.js",
+              "RelativeDocumentMoniker": "wwwroot\\js\\dashboards-analytics-graph.js",
+              "ToolTip": "D:\\TestAjax\\wwwroot\\js\\dashboards-analytics-graph.js",
+              "RelativeToolTip": "wwwroot\\js\\dashboards-analytics-graph.js",
+              "ViewState": "AgIAACQAAAAAAAAAAAAAACgAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2026-02-01T13:06:33.035Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\TestAjax\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Home\\Index.cshtml",
+              "ToolTip": "D:\\TestAjax\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAAJIAAAAAAAAAAAAnwJkAAAA7AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-01T13:05:29.781Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "index.cshtml",
+              "DocumentMoniker": "D:\\TestAjax\\Views\\Ledger\\index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Ledger\\index.cshtml",
+              "ToolTip": "D:\\TestAjax\\Views\\Ledger\\index.cshtml",
+              "RelativeToolTip": "Views\\Ledger\\index.cshtml",
+              "ViewState": "AgIAAH8AAAAAZmZmZmYSwIgAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-01T13:57:27.129Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "D:\\TestAjax\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "Controllers\\HomeController.cs",
+              "ToolTip": "D:\\TestAjax\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "Controllers\\HomeController.cs",
+              "ViewState": "AgIAABYAAADAzMzMzMwuwB4AAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-01T13:04:23.668Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }

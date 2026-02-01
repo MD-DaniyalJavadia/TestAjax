@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "5FNt4gVJ2QE=",
+  "dgSpecHash": "87ItZNIIngQ=",
   "success": true,
-  "projectFilePath": "D:\\TestAjax-master\\TestAjax.csproj",
+  "projectFilePath": "D:\\TestAjax\\TestAjax.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\HP\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\HP\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",

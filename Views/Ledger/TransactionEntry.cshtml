@@ -1,12 +1,41 @@
 ﻿@model TestAjax.Models.Contact
 
+<!-- Bootstrap Icons -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+<!-- Flatpickr CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+<!-- Flatpickr JS -->
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+<style>
+    /* Remove number arrows */
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    input[type=number] {
+        -moz-appearance: textfield;
+    }
+</style>
+
 @{
     string transactionType = ViewBag.TransactionType ?? "Received";
     decimal currentBalance = (decimal)ViewBag.CurrentBalance;
-    string balanceText = currentBalance > 0 ? "I will receive Rs. " + currentBalance.ToString("N0") : currentBalance < 0 ? "I will give Rs. " + Math.Abs(currentBalance).ToString("N0") : "Balance settled";
+
+    string balanceText =
+        currentBalance > 0
+        ? "I will give Rs. " + currentBalance.ToString("N0")
+        : currentBalance < 0
+            ? "I will receive Rs. " + Math.Abs(currentBalance).ToString("N0")
+            : "Balance settled";
 }
 
 <div class="page-inner">
+
     <div class="d-flex align-items-center mb-4">
         <a asp-action="Index" asp-route-id="@Model.Id" class="me-3 text-dark">
             <i class="fas fa-arrow-left fa-lg"></i>
@@ -20,21 +49,47 @@
         <input type="hidden" name="contactId" value="@Model.Id" />
         <input type="hidden" name="type" value="@transactionType" />
 
+        <!-- Amount -->
         <div class="mb-3">
-            <label>Amount</label>
-            <input type="number" name="amount" class="form-control" required />
+            <label class="form-label">Amount</label>
+            <input type="number" name="amount" class="form-control text-end" required />
         </div>
 
+        <!-- Modern Date Picker -->
         <div class="mb-3">
-            <label>Date</label>
-            <input type="date" name="transactionDate" class="form-control" value="@DateTime.Today.ToString("yyyy-MM-dd")" />
+            <label class="form-label">Date</label>
+            <div class="input-group">
+                <span class="input-group-text bg-white">
+                    <i class="bi bi-calendar-event text-dark"></i>
+                </span>
+                <input type="text"
+                       id="transactionDate"
+                       name="transactionDate"
+                       class="form-control"
+                       placeholder="Select date"
+                       readonly />
+            </div>
         </div>
 
+        <!-- Details -->
         <div class="mb-3">
-            <label>Details</label>
-            <textarea name="details" class="form-control"></textarea>
+            <label class="form-label">Details</label>
+            <textarea name="details" class="form-control" rows="3"></textarea>
         </div>
 
-        <button type="submit" class="btn btn-primary">Save</button>
+        <button type="submit" class="btn btn-primary">
+            Save
+        </button>
     </form>
 </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        flatpickr("#transactionDate", {
+            dateFormat: "Y-m-d",
+            defaultDate: "today",
+            allowInput: false,
+            disableMobile: true
+        });
+    });
+</script>

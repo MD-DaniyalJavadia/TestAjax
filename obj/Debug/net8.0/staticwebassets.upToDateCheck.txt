@@ -401,8 +401,10 @@ wwwroot\assets\js\plugin\sweetalert\sweetalert.min.js
 wwwroot\assets\js\plugin\webfont\webfont.min.js
 wwwroot\assets\js\setting-demo.js
 wwwroot\assets\js\setting-demo2.js
+wwwroot\css\apex-charts.dist.css
 wwwroot\css\site.css
 wwwroot\favicon.ico
+wwwroot\js\apexcharts.dist.js
 wwwroot\js\site.js
 wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css
 wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map
@@ -461,3 +463,5 @@ wwwroot\lib\jquery\dist\jquery.js
 wwwroot\lib\jquery\dist\jquery.min.js
 wwwroot\lib\jquery\dist\jquery.min.map
 wwwroot\lib\jquery\LICENSE.txt
+wwwroot\js\chart-helper.js
+wwwroot\js\dashboards-analytics-graph.js

@@ -15,7 +15,11 @@ public partial class UharContext : DbContext
 
     public virtual DbSet<Contact> Contacts { get; set; }
 
+    public virtual DbSet<MonthlyTransactionSummary> MonthlyTransactionSummaries { get; set; }
+
     public virtual DbSet<Transaction> Transactions { get; set; }
+
+    public virtual DbSet<TransactionSummary> TransactionSummaries { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -45,6 +49,17 @@ public partial class UharContext : DbContext
             entity.Property(e => e.UpdatedBy).HasMaxLength(100);
         });
 
+        modelBuilder.Entity<MonthlyTransactionSummary>(entity =>
+        {
+            entity
+                .HasNoKey()
+                .ToView("MonthlyTransactionSummary");
+
+            entity.Property(e => e.MonthName).HasMaxLength(30);
+            entity.Property(e => e.TotalGiven).HasColumnType("decimal(38, 2)");
+            entity.Property(e => e.TotalReceived).HasColumnType("decimal(38, 2)");
+        });
+
         modelBuilder.Entity<Transaction>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PK__Transact__3214EC070BFFAE95");
@@ -60,6 +75,18 @@ public partial class UharContext : DbContext
                 .HasForeignKey(d => d.ContactId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__Transacti__Conta__3D5E1FD2");
+        });
+
+        modelBuilder.Entity<TransactionSummary>(entity =>
+        {
+            entity
+                .HasNoKey()
+                .ToView("TransactionSummary");
+
+            entity.Property(e => e.MonthName).HasMaxLength(30);
+            entity.Property(e => e.PartyName).HasMaxLength(150);
+            entity.Property(e => e.TotalGiven).HasColumnType("decimal(38, 2)");
+            entity.Property(e => e.TotalReceived).HasColumnType("decimal(38, 2)");
         });
 
         OnModelCreatingPartial(modelBuilder);

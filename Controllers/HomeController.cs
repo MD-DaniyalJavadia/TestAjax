@@ -1,15 +1,18 @@
-using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System.Diagnostics;
 using TestAjax.Models;
 
 namespace TestAjax.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+         private readonly UharContext _context;
+         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, UharContext context)
         {
+            _context = context ?? throw new ArgumentNullException(nameof(context));
             _logger = logger;
         }
 
@@ -22,6 +25,19 @@ namespace TestAjax.Controllers
         public IActionResult Privacy()
         {
             return View();
+        }
+
+
+        public IActionResult MonthlyTransactionSummary()
+        {
+            var data = _context.MonthlyTransactionSummaries.ToList();
+            return Json(data);
+        }
+
+        public IActionResult TransactionSummary()
+        {
+            var data = _context.TransactionSummaries.ToList();
+            return Json(data);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

@@ -17,73 +17,73 @@ build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = TestAjax
 build_property.RootNamespace = TestAjax
-build_property.ProjectDir = D:\TestAjax-master\
+build_property.ProjectDir = D:\TestAjax\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = D:\TestAjax-master
+build_property.MSBuildProjectDirectory = D:\TestAjax
 build_property._RazorSourceGeneratorDebug = 
 build_property.EffectiveAnalysisLevelStyle = 8.0
 build_property.EnableCodeStyleSeverity = 
 
-[D:/TestAjax-master/Views/Contacts/Create.cshtml]
+[D:/TestAjax/Views/Contacts/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udGFjdHNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/TestAjax-master/Views/Contacts/index.cshtml]
+[D:/TestAjax/Views/Contacts/index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udGFjdHNcaW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/TestAjax-master/Views/Home/Index.cshtml]
+[D:/TestAjax/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/TestAjax-master/Views/Home/Privacy.cshtml]
+[D:/TestAjax/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/TestAjax-master/Views/Ledger/index.cshtml]
+[D:/TestAjax/Views/Ledger/index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGVkZ2VyXGluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/TestAjax-master/Views/Ledger/Ledger.cshtml]
+[D:/TestAjax/Views/Ledger/Ledger.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGVkZ2VyXExlZGdlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/TestAjax-master/Views/Ledger/TransactionEntry.cshtml]
+[D:/TestAjax/Views/Ledger/TransactionEntry.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGVkZ2VyXFRyYW5zYWN0aW9uRW50cnkuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/TestAjax-master/Views/Shared/Error.cshtml]
+[D:/TestAjax/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/TestAjax-master/Views/Shared/_Footer.cshtml]
+[D:/TestAjax/Views/Shared/_Footer.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Gb290ZXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/TestAjax-master/Views/Shared/_Sidebar.cshtml]
+[D:/TestAjax/Views/Shared/_Sidebar.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9TaWRlYmFyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/TestAjax-master/Views/Shared/_Topbar.cshtml]
+[D:/TestAjax/Views/Shared/_Topbar.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Ub3BiYXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/TestAjax-master/Views/Shared/_ValidationScriptsPartial.cshtml]
+[D:/TestAjax/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/TestAjax-master/Views/_ViewImports.cshtml]
+[D:/TestAjax/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/TestAjax-master/Views/_ViewStart.cshtml]
+[D:/TestAjax/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/TestAjax-master/Views/Shared/_Layout.cshtml]
+[D:/TestAjax/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-gfjd0d7ih6

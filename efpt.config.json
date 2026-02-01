@@ -22,6 +22,14 @@
       {
          "Name": "[dbo].[Transactions]",
          "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[MonthlyTransactionSummary]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[dbo].[TransactionSummary]",
+         "ObjectType": 3
       }
    ],
    "UiHint": null,
