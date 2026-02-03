@@ -1,71 +1,12 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "D:\\TestAjax\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{A173A074-C2DC-4FE7-8EED-68B464EFD875}|TestAjax.csproj|d:\\testajax\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A173A074-C2DC-4FE7-8EED-68B464EFD875}|TestAjax.csproj|solutionrelative:controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A173A074-C2DC-4FE7-8EED-68B464EFD875}|TestAjax.csproj|d:\\testajax\\wwwroot\\js\\dashboards-analytics-graph.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{A173A074-C2DC-4FE7-8EED-68B464EFD875}|TestAjax.csproj|solutionrelative:wwwroot\\js\\dashboards-analytics-graph.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A173A074-C2DC-4FE7-8EED-68B464EFD875}|TestAjax.csproj|d:\\testajax\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A173A074-C2DC-4FE7-8EED-68B464EFD875}|TestAjax.csproj|solutionrelative:views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": [
-        {
-          "DockedWidth": 200,
-          "SelectedChildIndex": 0,
-          "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "HomeController.cs",
-              "DocumentMoniker": "D:\\TestAjax\\Controllers\\HomeController.cs",
-              "RelativeDocumentMoniker": "Controllers\\HomeController.cs",
-              "ToolTip": "D:\\TestAjax\\Controllers\\HomeController.cs",
-              "RelativeToolTip": "Controllers\\HomeController.cs",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAAAB0AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-01T14:54:13.584Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "dashboards-analytics-graph.js",
-              "DocumentMoniker": "D:\\TestAjax\\wwwroot\\js\\dashboards-analytics-graph.js",
-              "RelativeDocumentMoniker": "wwwroot\\js\\dashboards-analytics-graph.js",
-              "ToolTip": "D:\\TestAjax\\wwwroot\\js\\dashboards-analytics-graph.js",
-              "RelativeToolTip": "wwwroot\\js\\dashboards-analytics-graph.js",
-              "ViewState": "AgIAAEIAAAAAAAAAAAAnwFIAAAAuAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2026-02-01T14:39:49.683Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "D:\\TestAjax\\Views\\Home\\Index.cshtml",
-              "RelativeDocumentMoniker": "Views\\Home\\Index.cshtml",
-              "ToolTip": "D:\\TestAjax\\Views\\Home\\Index.cshtml",
-              "RelativeToolTip": "Views\\Home\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-02-01T14:28:33.798Z",
-              "EditorCaption": ""
-            }
-          ]
-        }
-      ]
+      "DocumentGroups": []
     }
   ]
 }

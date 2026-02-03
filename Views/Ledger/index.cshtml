@@ -70,10 +70,7 @@
 
             @if (!string.IsNullOrEmpty(whatsappNumber))
             {
-                <a href="https://wa.me/@whatsappNumber?text=@Uri.EscapeDataString($"Ledger balance Rs. {displayAmount}")"
-                   target="_blank"
-                   class="btn btn-sm btn-success"
-                   title="Chat on WhatsApp">
+                <a href="https://wa.me/@whatsappNumber?text=@Uri.EscapeDataString($"You have an outstanding balance of Rs. {displayAmount}. You have to pay this amount.")" target="_blank" class="btn btn-sm btn-success" title="Start a conversation on WhatsApp">
                     <i class="fab fa-whatsapp me-1"></i> WhatsApp
                 </a>
             }

@@ -26,6 +26,16 @@ namespace TestAjax.Controllers
         {
             return View();
         }
+        public IActionResult TotalContacts()
+        {
+            int totalParties = _context.TransactionSummaries
+                .Select(x => x.PartyName)
+                .Where(x => x != null && x != "")
+                .Distinct()
+                .Count();
+
+            return Json(new { TotalParties = totalParties });
+        }
 
 
         public IActionResult MonthlyTransactionSummary()

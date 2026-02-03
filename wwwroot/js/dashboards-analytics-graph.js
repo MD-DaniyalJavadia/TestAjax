@@ -26,7 +26,7 @@ renderIncomeChart({
 
 renderGroupedBarChart({
     containerId: "GroupChart2",
-    chartTitle: "Ledger-wise Debit & Credit",
+    chartTitle: "Ledger Wise Received",
     endpoint: "/Home/TransactionSummary",
     xField: "partyName",
     seriesConfig: [
@@ -39,7 +39,7 @@ renderGroupedBarChart({
 
 renderGroupedBarChart({
     containerId: "GroupChart6",
-    chartTitle: "Ledger-wise Debit & Credit",
+    chartTitle: "Ledger Wise Given / Received",
     endpoint: "/Home/TransactionSummary",
     xField: "monthName",
     seriesConfig: [
@@ -52,7 +52,7 @@ renderGroupedBarChart({
 
 renderGroupedBarChart({
     containerId: "GroupChart1",
-    chartTitle: "Ledger-wise Debit & Credit",
+    chartTitle: "Ledger-wise Given",
     endpoint: "/Home/TransactionSummary",
     xField: "partyName",
     seriesConfig: [

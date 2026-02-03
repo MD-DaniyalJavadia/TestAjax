@@ -20,8 +20,8 @@
 						</div>
 						<div class="col col-stats ms-3 ms-sm-0">
 							<div class="numbers">
-								<p class="card-category">Visitors</p>
-								<h4 class="card-title">1,294</h4>
+								<p class="card-category">Accounts</p>
+								<h4 class="card-title" id="partyCount"></h4>
 							</div>
 						</div>
 					</div>
@@ -39,8 +39,8 @@
 						</div>
 						<div class="col col-stats ms-3 ms-sm-0">
 							<div class="numbers">
-								<p class="card-category">Subscribers</p>
-								<h4 class="card-title">1303</h4>
+								<p class="card-category">Total Given</p>
+								<h4 class="card-title">12300</h4>
 							</div>
 						</div>
 					</div>
@@ -100,10 +100,10 @@
 					<!-- Nav tabs -->
 					<ul class="nav nav-tabs" id="userStatsTab" role="tablist">
 						<li class="nav-item">
-							<a class="nav-link active" id="tab1-tab" data-toggle="tab" href="#tab1" role="tab" aria-controls="tab1" aria-selected="true">Tab 1</a>
+							<a class="nav-link active" id="tab1-tab" data-toggle="tab" href="#tab1" role="tab" aria-controls="tab1" aria-selected="true">Total Given</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" id="tab2-tab" data-toggle="tab" href="#tab2" role="tab" aria-controls="tab2" aria-selected="false">Tab 2</a>
+							<a class="nav-link" id="tab2-tab" data-toggle="tab" href="#tab2" role="tab" aria-controls="tab2" aria-selected="false">Total Received</a>
 						</li>
 					</ul>
 
@@ -148,13 +148,13 @@
 					<!-- Nav tabs -->
 					<ul class="nav nav-tabs" id="userStatsTab" role="tablist">
 						<li class="nav-item">
-							<a class="nav-link active" id="tab3-tab" data-toggle="tab" href="#tab3" role="tab" aria-controls="tab3" aria-selected="true">Tab 3</a>
+							<a class="nav-link active" id="tab3-tab" data-toggle="tab" href="#tab3" role="tab" aria-controls="tab3" aria-selected="true">Ledger Wise Given</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" id="tab4-tab" data-toggle="tab" href="#tab4" role="tab" aria-controls="tab4" aria-selected="false">Tab 4</a>
+							<a class="nav-link" id="tab4-tab" data-toggle="tab" href="#tab4" role="tab" aria-controls="tab4" aria-selected="false">Ledger Wise Received</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" id="tab6-tab" data-toggle="tab" href="#tab6" role="tab" aria-controls="tab6" aria-selected="false">Tab 6</a>
+							<a class="nav-link" id="tab6-tab" data-toggle="tab" href="#tab6" role="tab" aria-controls="tab6" aria-selected="false">Ledger Wise Given / Received</a>
 						</li>
 					</ul>
 
@@ -610,6 +610,16 @@
 	</div>
 </div>
 
+<script>
+	document.addEventListener("DOMContentLoaded", function () {
+		fetch('/Home/TotalContacts')
+			.then(response => response.json())
+			.then(data => {
+				document.getElementById("partyCount").innerText = data.totalParties;
+			})
+			.catch(error => console.error(error));
+	});
+</script>
 
 @section Scripts {
     <script src="~/js/chart-helper.js"></script>

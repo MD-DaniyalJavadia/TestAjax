@@ -1,3 +1,4 @@
 # SQL Server database files
 *.mdf
 *.ldf
+*.vs
