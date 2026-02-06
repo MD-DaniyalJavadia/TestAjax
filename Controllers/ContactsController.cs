@@ -106,6 +106,47 @@ namespace TestAjax.Controllers
             return View(new ContactViewModel());
         }
 
+        // Edit Contact - GET
+
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            if (id <= 0)
+                return BadRequest();
+
+            var contact = _context.Contacts.FirstOrDefault(x => x.Id == id);
+
+            if (contact == null)
+                return NotFound();
+
+            var model = new Contact
+            {
+                Id = contact.Id,
+                Name = contact.Name,
+                PhoneNumber = contact.PhoneNumber,
+                ContactType = contact.ContactType,
+                Email = contact.Email,
+            };
+
+            ViewData["Title"] = "Edit Contact";
+            return View(model);
+        }
+        [HttpPost]
+        public async Task<IActionResult> Delete(int id)
+        {
+            if (id <= 0)
+                return BadRequest();
+
+            var contact = await _context.Contacts.FindAsync(id);
+
+            if (contact == null)
+                return NotFound();
+
+            _context.Contacts.Remove(contact);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("Index");
+        }
         // Create Contact - POST
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -132,5 +173,37 @@ namespace TestAjax.Controllers
 
             return RedirectToAction("Index", "Ledger", new { id = contact.Id });
         }
+        // Edit Contact - POST
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(Contact model)
+        {
+            if (!ModelState.IsValid)
+                return View(model);
+
+            var contact = await _context.Contacts
+                                        .FirstOrDefaultAsync(x => x.Id == model.Id);
+
+            if (contact == null)
+                return NotFound();
+
+            // Update fields
+            contact.Name = model.Name;
+            contact.PhoneNumber = model.PhoneNumber;
+            contact.ContactType = model.ContactType;
+            contact.Email = model.Email;
+            contact.Address = model.Address;
+            contact.Notes = model.Notes;
+
+            // Optional audit fields
+            contact.UpdatedAt = DateTime.Now;
+            contact.UpdatedBy = User.Identity?.Name ?? "System";
+
+            _context.Contacts.Update(contact);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("Index", "Ledger", new { id = contact.Id });
+        }
+
     }
 }

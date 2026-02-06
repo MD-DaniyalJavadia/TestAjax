@@ -1,12 +1,105 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "D:\\TestAjax\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A173A074-C2DC-4FE7-8EED-68B464EFD875}|TestAjax.csproj|d:\\testajax\\controllers\\contactscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A173A074-C2DC-4FE7-8EED-68B464EFD875}|TestAjax.csproj|solutionrelative:controllers\\contactscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A173A074-C2DC-4FE7-8EED-68B464EFD875}|TestAjax.csproj|d:\\testajax\\views\\contacts\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A173A074-C2DC-4FE7-8EED-68B464EFD875}|TestAjax.csproj|solutionrelative:views\\contacts\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A173A074-C2DC-4FE7-8EED-68B464EFD875}|TestAjax.csproj|d:\\testajax\\models\\contact.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A173A074-C2DC-4FE7-8EED-68B464EFD875}|TestAjax.csproj|solutionrelative:models\\contact.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A173A074-C2DC-4FE7-8EED-68B464EFD875}|TestAjax.csproj|d:\\testajax\\views\\ledger\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A173A074-C2DC-4FE7-8EED-68B464EFD875}|TestAjax.csproj|solutionrelative:views\\ledger\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A173A074-C2DC-4FE7-8EED-68B464EFD875}|TestAjax.csproj|d:\\testajax\\views\\contacts\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A173A074-C2DC-4FE7-8EED-68B464EFD875}|TestAjax.csproj|solutionrelative:views\\contacts\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "D:\\TestAjax\\Views\\Contacts\\Edit.cshtml",
+              "RelativeDocumentMoniker": "Views\\Contacts\\Edit.cshtml",
+              "ToolTip": "D:\\TestAjax\\Views\\Contacts\\Edit.cshtml",
+              "RelativeToolTip": "Views\\Contacts\\Edit.cshtml",
+              "ViewState": "AgIAABkAAAAAAAAAAAAiwCMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-03T13:31:29.213Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Contact.cs",
+              "DocumentMoniker": "D:\\TestAjax\\Models\\Contact.cs",
+              "RelativeDocumentMoniker": "Models\\Contact.cs",
+              "ToolTip": "D:\\TestAjax\\Models\\Contact.cs",
+              "RelativeToolTip": "Models\\Contact.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAYwA8AAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-03T13:38:17.915Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "index.cshtml",
+              "DocumentMoniker": "D:\\TestAjax\\Views\\Ledger\\index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Ledger\\index.cshtml",
+              "ToolTip": "D:\\TestAjax\\Views\\Ledger\\index.cshtml",
+              "RelativeToolTip": "Views\\Ledger\\index.cshtml",
+              "ViewState": "AgIAADYAAAAAAAAAAAAuwD4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-03T13:27:14.439Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ContactsController.cs",
+              "DocumentMoniker": "D:\\TestAjax\\Controllers\\ContactsController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ContactsController.cs",
+              "ToolTip": "D:\\TestAjax\\Controllers\\ContactsController.cs",
+              "RelativeToolTip": "Controllers\\ContactsController.cs",
+              "ViewState": "AgIAAH4AAAAAAAAAAAAqwIcAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-03T13:25:31.077Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "index.cshtml",
+              "DocumentMoniker": "D:\\TestAjax\\Views\\Contacts\\index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Contacts\\index.cshtml",
+              "ToolTip": "D:\\TestAjax\\Views\\Contacts\\index.cshtml",
+              "RelativeToolTip": "Views\\Contacts\\index.cshtml",
+              "ViewState": "AgIAAEsAAAAAAAAAAAAiwFQAAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-03T13:25:05.585Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }

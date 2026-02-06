@@ -525,10 +525,3 @@ D:\TestAjax-master\obj\Debug\net8.0\refint\TestAjax.dll
 D:\TestAjax-master\obj\Debug\net8.0\TestAjax.pdb
 D:\TestAjax-master\obj\Debug\net8.0\TestAjax.genruntimeconfig.cache
 D:\TestAjax-master\obj\Debug\net8.0\ref\TestAjax.dll
-D:\TestAjax\bin\Debug\net8.0\PublishMyApp\web.config
-D:\TestAjax\bin\Debug\net8.0\PublishMyApp\appsettings.Development.json
-D:\TestAjax\bin\Debug\net8.0\PublishMyApp\appsettings.json
-D:\TestAjax\bin\Debug\net8.0\PublishMyApp\efpt.config.json
-D:\TestAjax\bin\Debug\net8.0\PublishMyApp\TestAjax.deps.json
-D:\TestAjax\bin\Debug\net8.0\PublishMyApp\TestAjax.runtimeconfig.json
-D:\TestAjax\bin\Debug\net8.0\PublishMyApp\TestAjax.staticwebassets.endpoints.json
