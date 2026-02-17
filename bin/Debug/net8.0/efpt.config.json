@@ -30,6 +30,26 @@
       {
          "Name": "[dbo].[TransactionSummary]",
          "ObjectType": 3
+      },
+      {
+         "Name": "[dbo].[vw_ActiveContactsWithBalance]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[dbo].[vw_DashboardSummary]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[dbo].[vw_OverallBalance]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[dbo].[vw_TotalPayable]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[dbo].[vw_TotalReceivable]",
+         "ObjectType": 3
       }
    ],
    "UiHint": null,

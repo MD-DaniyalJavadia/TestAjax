@@ -17,7 +17,7 @@
 
     string displayAmount = Math.Abs(balance).ToString("N0");
 
-    // -------- WhatsApp Logic --------
+    // WhatsApp logic
     var whatsappNumber = ViewData["WhatsAppNumber"]?.ToString();
 
     if (!string.IsNullOrWhiteSpace(whatsappNumber))
@@ -28,7 +28,6 @@
             .Replace("(", "")
             .Replace(")", "");
 
-        // Pakistan country code (change if required)
         if (!whatsappNumber.StartsWith("92"))
         {
             whatsappNumber = "92" + whatsappNumber.TrimStart('0');
@@ -69,7 +68,6 @@
                class="ms-2 text-muted"
                title="Edit Name">
                 <i class="fas fa-pencil-alt ms-2 text-muted small"></i>
-
             </a>
         </h4>
 
@@ -127,13 +125,21 @@
                     <tbody>
                         @foreach (var t in transactions)
                         {
-                            <tr>
+                            <tr data-id="@t.Id">
                                 <td>
                                     @(t.TransactionDate.HasValue
                                                                 ? t.TransactionDate.Value.ToString("dd MMM yyyy")
                                                                 : "—")
                         </td>
-                        <td>@(string.IsNullOrWhiteSpace(t.Details) ? "—" : t.Details)</td>
+                        <td>
+                            <div class="d-flex align-items-center gap-2">
+                                <span>@(string.IsNullOrWhiteSpace(t.Details) ? "—" : t.Details)</span>
+                                @if (!string.IsNullOrEmpty(t.PhotoFileName))
+                                        {
+                                            <i class="fas fa-paperclip text-secondary" title="Attachment available"></i>
+                                        }
+                                    </div>
+                                </td>
                                 <td class="text-end text-success">
                                     @(t.Type == "Received" ? t.Amount.ToString("N0") : "—")
                                 </td>
@@ -155,3 +161,189 @@
         </div>
     }
 </div>
+
+<!-- Canvas Sidebar -->
+<div id="transactionCanvas" class="transaction-canvas">
+    <div class="canvas-header d-flex justify-content-between align-items-center p-3 border-bottom">
+
+        <!-- Left Side (Close + Title + Edit) -->
+        <div class="d-flex align-items-center gap-3">
+            <!-- Close Button -->
+            <button type="button" id="closeCanvasBtn" class="btn btn-link text-dark p-0" title="Close">
+                <i class="fas fa-times fa-lg"></i>
+            </button>
+
+            <!-- Title -->
+            <h5 class="mb-0">Transaction details</h5>
+
+            <!-- Edit Button -->
+            <button type="button"
+                    id="editTransactionBtn"
+                    class="btn btn-link text-dark p-0"
+                    title="Edit"
+                    data-id="">
+                <i class="fas fa-pen"></i>
+            </button>
+        </div>
+
+        <!-- Right Side (Delete Button) -->
+        <button type="button" id="deleteTransactionBtn" class="btn btn-link text-danger p-0" title="Delete">
+            <i class="fas fa-trash"></i>
+        </button>
+    </div>
+
+    <div class="canvas-body p-3" id="canvasContent">
+        <div class="text-center py-5">
+            <div class="spinner-border" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .transaction-canvas {
+        position: fixed;
+        top: 0;
+        right: -400px; /* initially hidden */
+        width: 400px;
+        height: 100vh;
+        background: #fff;
+        box-shadow: -3px 0 10px rgba(0,0,0,0.2);
+        overflow-y: auto;
+        transition: right 0.3s ease;
+        z-index: 1050;
+        display: flex;
+        flex-direction: column;
+    }
+
+        .transaction-canvas.open {
+            right: 0;
+        }
+
+    .canvas-header {
+        border-bottom: 1px solid #ddd;
+    }
+
+    .canvas-body {
+        flex: 1;
+        overflow-y: auto;
+    }
+
+    tr:hover {
+        cursor: pointer;
+        background-color: #f8f9fa;
+    }
+</style>
+
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function () {
+
+            const canvas = $('#transactionCanvas');
+            const content = $('#canvasContent');
+            const editBtn = $('#editTransactionBtn');
+            const deleteBtn = $('#deleteTransactionBtn');
+
+            // Disable edit & delete initially
+            editBtn.prop('disabled', true);
+            deleteBtn.prop('disabled', true);
+
+            // ===============================
+            // ROW CLICK → OPEN CANVAS
+            // ===============================
+            $('table tbody tr').click(function () {
+
+                const id = $(this).data('id');
+
+                if (!id) {
+                    alert("Transaction ID not found.");
+                    return;
+                }
+
+                // Highlight selected row
+                $('table tbody tr').removeClass('table-active');
+                $(this).addClass('table-active');
+
+                // Set ID to buttons
+                editBtn.attr('data-id', id).prop('disabled', false);
+                deleteBtn.attr('data-id', id).prop('disabled', false);
+
+                // Open canvas
+                canvas.addClass('open');
+
+                // Show loader
+                content.html(`
+                    <div class="text-center py-5">
+                        <div class="spinner-border" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                    </div>
+                `);
+
+                // Load transaction details
+                $.ajax({
+                    url: '@Url.Action("GetTransactionCanvasContent", "Ledger")',
+                    data: { id: id },
+                    success: function (data) {
+                        content.html(data);
+                    },
+                    error: function () {
+                        content.html('<div class="alert alert-danger">Unable to load transaction details.</div>');
+                    }
+                });
+            });
+
+
+            // ===============================
+            // EDIT BUTTON CLICK
+            // ===============================
+            editBtn.click(function () {
+
+                const id = $(this).data('id');
+
+                if (!id) {
+                    alert("Transaction ID not found.");
+                    return;
+                }
+
+                content.html(`
+                    <div class="text-center py-5">
+                        <div class="spinner-border" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                    </div>
+                `);
+
+                $.ajax({
+                    url: '@Url.Action("GetTransactionEditForm", "Ledger")',
+                    data: { id: id },
+                    success: function (data) {
+                            console.log(data); // See raw HTML or error
+                        content.html(data);
+                    },
+                    error: function () {
+                        content.html('<div class="alert alert-danger">Unable to load edit form.</div>');
+                    }
+                });
+            });
+
+
+            // ===============================
+            // CLOSE BUTTON
+            // ===============================
+            $('#closeCanvasBtn').click(function () {
+                canvas.removeClass('open');
+
+                // Reset buttons
+                editBtn.prop('disabled', true).attr('data-id', '');
+                deleteBtn.prop('disabled', true).attr('data-id', '');
+
+                // Remove selected row highlight
+                $('table tbody tr').removeClass('table-active');
+            });
+
+        });
+    </script>
+}

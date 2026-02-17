@@ -15,6 +15,8 @@ public partial class TransactionSummary
 
     public string PartyName { get; set; }
 
+    public string ContactType { get; set; }
+
     public decimal? TotalGiven { get; set; }
 
     public decimal? TotalReceived { get; set; }

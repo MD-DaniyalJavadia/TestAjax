@@ -268,3 +268,4 @@ D:\TestAjax\bin\Release\net8.0\PublishMyApp\efpt.config.json
 D:\TestAjax\bin\Release\net8.0\PublishMyApp\TestAjax.deps.json
 D:\TestAjax\bin\Release\net8.0\PublishMyApp\TestAjax.runtimeconfig.json
 D:\TestAjax\bin\Release\net8.0\PublishMyApp\TestAjax.staticwebassets.endpoints.json
+D:\TestAjax\obj\Release\net8.0\staticwebassets.upToDateCheck.txt

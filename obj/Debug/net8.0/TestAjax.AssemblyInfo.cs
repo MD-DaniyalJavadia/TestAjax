@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TestAjax")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+793fab5a0582c61d88a3a0decdf2f3051a3061e6")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6d465c7b694608a0bb5201e2bbc26a18654c271d")]
 [assembly: System.Reflection.AssemblyProductAttribute("TestAjax")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TestAjax")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

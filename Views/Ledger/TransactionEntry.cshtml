@@ -1,95 +1,228 @@
 ﻿@model TestAjax.Models.Contact
 
-<!-- Bootstrap Icons -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-
-<!-- Flatpickr CSS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-
-<!-- Flatpickr JS -->
-<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-
-<style>
-    /* Remove number arrows */
-    input[type=number]::-webkit-inner-spin-button,
-    input[type=number]::-webkit-outer-spin-button {
-        -webkit-appearance: none;
-        margin: 0;
-    }
-
-    input[type=number] {
-        -moz-appearance: textfield;
-    }
-</style>
-
 @{
     string transactionType = ViewBag.TransactionType ?? "Received";
     decimal currentBalance = (decimal)ViewBag.CurrentBalance;
-
-    string balanceText =
-        currentBalance > 0
-        ? "I will give Rs. " + currentBalance.ToString("N0")
-        : currentBalance < 0
-            ? "I will receive Rs. " + Math.Abs(currentBalance).ToString("N0")
-            : "Balance settled";
 }
 
-<div class="page-inner">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
+<style>
+    .type-btn {
+        padding: 12px 30px;
+        border-radius: 10px;
+        font-weight: 600;
+        cursor: pointer;
+        border: none;
+        transition: 0.2s;
+    }
+
+    .btn-received-active {
+        background-color: #198754;
+        color: #fff;
+    }
+
+    .btn-given-active {
+        background-color: #dc3545;
+        color: #fff;
+    }
+
+    .btn-light-custom {
+        background-color: #f1f1f1;
+        color: #333;
+    }
+
+    .quick-amount button {
+        border-radius: 20px;
+        margin: 4px;
+    }
+
+    .photo-upload-box {
+        border: 2px dashed #ccc;
+        border-radius: 12px;
+        width: 150px;
+        height: 130px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        cursor: pointer;
+        overflow: hidden;
+        transition: 0.3s;
+        background-color: #fafafa;
+        position: relative;
+    }
+
+        .photo-upload-box:hover {
+            background-color: #f0f0f0;
+        }
+
+    .preview-img-inside {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: none;
+        z-index: 1;
+    }
+
+    #removePhoto {
+        z-index: 10; /* Remove button preview image ke upar aayega */
+    }
+</style>
+
+<div class="page-inner">
     <div class="d-flex align-items-center mb-4">
         <a asp-action="Index" asp-route-id="@Model.Id" class="me-3 text-dark">
             <i class="fas fa-arrow-left fa-lg"></i>
         </a>
-        <h4 class="mb-0">@Model.Name</h4>
+        <h5 class="mb-0">@Model.Name's transactions</h5>
     </div>
 
-    <p class="text-muted">Current Balance: @balanceText</p>
-
-    <form asp-action="AddTransaction" method="post">
+    <form asp-action="AddTransaction" method="post" enctype="multipart/form-data">
         <input type="hidden" name="contactId" value="@Model.Id" />
-        <input type="hidden" name="type" value="@transactionType" />
+        <input type="hidden" id="typeInput" name="type" value="@transactionType" />
 
-        <!-- Amount -->
-        <div class="mb-3">
+        <!-- TYPE SWITCH -->
+        <div class="d-flex justify-content-center gap-4 mb-4">
+            <button type="button" id="btnReceived"
+                    class="type-btn @(transactionType == "Received" ? "btn-received-active" : "btn-light-custom")">
+                ↓ I TOOK
+            </button>
+            <button type="button" id="btnGiven"
+                    class="type-btn @(transactionType == "Given" ? "btn-given-active" : "btn-light-custom")">
+                ↑ I GAVE
+            </button>
+        </div>
+
+        <!-- BALANCE -->
+        <div class="mb-2 d-flex justify-content-between">
             <label class="form-label">Amount</label>
-            <input type="number" name="amount" class="form-control text-end" required />
+            <small class="text-muted">Balance: Rs. @currentBalance.ToString("N0")</small>
         </div>
 
-        <!-- Modern Date Picker -->
-        <div class="mb-3">
+        <!-- AMOUNT -->
+        <input type="number" id="amountInput" name="amount"
+               class="form-control form-control-lg" placeholder="Rs. 0" required />
+
+        <!-- QUICK AMOUNT - FIXED: Added type="button" -->
+        <div class="quick-amount mt-2">
+            <button type="button" class="btn btn-outline-primary btn-sm" onclick="addAmount(50)">+ 50</button>
+            <button type="button" class="btn btn-outline-primary btn-sm" onclick="addAmount(100)">+ 100</button>
+            <button type="button" class="btn btn-outline-primary btn-sm" onclick="addAmount(500)">+ 500</button>
+            <button type="button" class="btn btn-outline-primary btn-sm" onclick="addAmount(1000)">+ 1000</button>
+        </div>
+
+        <!-- DATE -->
+        <div class="mt-4">
             <label class="form-label">Date</label>
-            <div class="input-group">
-                <span class="input-group-text bg-white">
-                    <i class="bi bi-calendar-event text-dark"></i>
-                </span>
-                <input type="text"
-                       id="transactionDate"
-                       name="transactionDate"
-                       class="form-control"
-                       placeholder="Select date"
-                       readonly />
-            </div>
+            <input type="text" id="transactionDate" name="transactionDate"
+                   class="form-control" readonly />
         </div>
 
-        <!-- Details -->
-        <div class="mb-3">
+        <!-- DETAILS -->
+        <div class="mt-3">
             <label class="form-label">Details</label>
-            <textarea name="details" class="form-control" rows="3"></textarea>
+            <textarea name="details" class="form-control" rows="3"
+                      placeholder="Add detailed note here..."></textarea>
         </div>
 
-        <button type="submit" class="btn btn-primary">
-            Save
-        </button>
+        <!-- PHOTO - FIXED: Added z-index to remove button -->
+        <div class="mt-3">
+            <label class="form-label">Add Photo</label>
+            <div id="uploadBox" class="photo-upload-box"
+                 onclick="document.getElementById('photoInput').click();">
+                <i id="cameraIcon" class="bi bi-camera fs-3"></i>
+                <small id="uploadText">Add Photo</small>
+                <img id="previewImage" class="preview-img-inside" />
+                <button type="button" id="removePhoto"
+                        class="btn btn-sm btn-danger position-absolute top-0 end-0 m-1"
+                        style="display:none; border-radius:50%; width:28px; height:28px; padding:0; z-index:10;">
+                    ×
+                </button>
+            </div>
+            <input type="file" id="photoInput" name="photo" accept="image/*" hidden />
+        </div>
+
+        <!-- SUBMIT -->
+        <div class="mt-4 text-end">
+            <button type="submit" class="btn btn-primary px-4">SAVE</button>
+        </div>
     </form>
 </div>
 
 <script>
+    function addAmount(amount) {
+        const amountInput = document.getElementById('amountInput');
+        const currentValue = parseFloat(amountInput.value) || 0;
+        amountInput.value = currentValue + amount;
+    }
+
     document.addEventListener("DOMContentLoaded", function () {
         flatpickr("#transactionDate", {
             dateFormat: "Y-m-d",
-            defaultDate: "today",
-            allowInput: false,
-            disableMobile: true
+            defaultDate: "today"
+        });
+
+        const btnReceived = document.getElementById("btnReceived");
+        const btnGiven = document.getElementById("btnGiven");
+        const typeInput = document.getElementById("typeInput");
+        const contactId = @Model.Id;
+
+        function setType(type) {
+            typeInput.value = type;
+            btnReceived.classList.remove("btn-received-active", "btn-light-custom");
+            btnGiven.classList.remove("btn-given-active", "btn-light-custom");
+
+            if (type === "Received") {
+                btnReceived.classList.add("btn-received-active");
+                btnGiven.classList.add("btn-light-custom");
+            } else {
+                btnGiven.classList.add("btn-given-active");
+                btnReceived.classList.add("btn-light-custom");
+            }
+
+            const newUrl = `/Ledger/Add/${contactId}?type=${type}`;
+            window.history.pushState({}, '', newUrl);
+        }
+
+        btnReceived.addEventListener("click", () => setType("Received"));
+        btnGiven.addEventListener("click", () => setType("Given"));
+
+        // IMAGE PREVIEW LOGIC
+        const photoInput = document.getElementById("photoInput");
+        const preview = document.getElementById("previewImage");
+        const removeBtn = document.getElementById("removePhoto");
+        const cameraIcon = document.getElementById("cameraIcon");
+        const uploadText = document.getElementById("uploadText");
+
+        photoInput.addEventListener("change", function (e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (ev) {
+                    preview.src = ev.target.result;
+                    preview.style.display = "block";
+                    removeBtn.style.display = "block";
+                    cameraIcon.style.display = "none";
+                    uploadText.style.display = "none";
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        removeBtn.addEventListener("click", function (e) {
+            e.stopPropagation(); // Yeh parent click event ko rokega
+            preview.src = "";
+            preview.style.display = "none";
+            removeBtn.style.display = "none";
+            cameraIcon.style.display = "block";
+            uploadText.style.display = "block";
+            photoInput.value = null; // ensures reset
         });
     });
 </script>

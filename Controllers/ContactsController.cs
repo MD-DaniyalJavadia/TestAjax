@@ -36,21 +36,9 @@ namespace TestAjax.Controllers
 
             try
             {
-                var contacts = await _context.Contacts
-                    .Where(c => c.IsActive && c.ContactType == type)
-                    .Select(c => new
-                    {
-                        ContactId = c.Id,
-                        name = c.Name,
-                        phoneNumber = c.PhoneNumber ?? "-",
-                        createdDateFormatted = c.CreatedAt.ToString("dd-MM-yyyy"), // yeh client-side safe nahi, isliye problem
-                        dueDate = "-",
-                        balance = _context.Transactions
-                            .Where(t => t.ContactId == c.Id)
-                            .Sum(t => t.Type == "Received" ? t.Amount : -t.Amount)
-                    })
-                    .ToListAsync();
-
+                var contacts = await _context.VwActiveContactsWithBalances
+                  .Where(c => c.ContactType == type) 
+                  .ToListAsync();
                 return Json(new { data = contacts });
             }
             catch (Exception ex)
@@ -61,14 +49,16 @@ namespace TestAjax.Controllers
             }
         }
 
+
+
         // Totals for "I will receive" and "I will give"
         [HttpGet]
-        public async Task<IActionResult> GetTotals()
+        public async Task<IActionResult> GetTotals(string type)
         {
             try
             {
                 var balances = await _context.Contacts
-                    .Where(c => c.IsActive)
+                    .Where(c => c.IsActive && c.ContactType == type)
                     .Select(c => _context.Transactions
                         .Where(t => t.ContactId == c.Id)
                         .Sum(t => t.Type == "Received" ? t.Amount : -t.Amount))
@@ -132,20 +122,60 @@ namespace TestAjax.Controllers
             return View(model);
         }
         [HttpPost]
-        public async Task<IActionResult> Delete(int id)
+        [IgnoreAntiforgeryToken]
+        public IActionResult Delete(long id)
         {
-            if (id <= 0)
-                return BadRequest();
+            try
+            {
+                var contact = _context.Contacts.Find(id);
+                if (contact == null)
+                {
+                    return Json(new
+                    {
+                        success = false,
+                        message = "Contact not found"
+                    });
+                }
 
-            var contact = await _context.Contacts.FindAsync(id);
+                // Pehle contact ke saare transactions delete karein
+                var transactions = _context.Transactions.Where(t => t.ContactId == id).ToList();
 
-            if (contact == null)
-                return NotFound();
+                if (transactions.Any())
+                {
+                    _context.Transactions.RemoveRange(transactions);
+                }
 
-            _context.Contacts.Remove(contact);
-            await _context.SaveChangesAsync();
+                // Ab contact delete karein
+                _context.Contacts.Remove(contact);
+                _context.SaveChanges();
 
-            return RedirectToAction("Index");
+                var message = transactions.Any()
+                    ? $"Contact and {transactions.Count} transaction(s) deleted successfully"
+                    : "Contact deleted successfully";
+
+                return Json(new
+                {
+                    success = true,
+                    message = message
+                });
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Delete Error: {ex.Message}");
+                return Json(new
+                {
+                    success = false,
+                    message = "An error occurred while deleting the contact"
+                });
+            }
+        }
+        [HttpGet]
+        public async Task<IActionResult> HasTransactions(long id)
+        {
+            var hasTransactions = await _context.Transactions
+                .AnyAsync(t => t.ContactId == id);
+
+            return Json(hasTransactions);
         }
         // Create Contact - POST
         [HttpPost]

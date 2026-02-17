@@ -92,8 +92,8 @@
                     }
                 },
                 columns: [
-                    { data: 'createdDateFormatted' },
-                    { data: 'name' },
+                    { data: 'lastTransactionDate' },
+                    { data: 'contactName' },
                     { data: 'phoneNumber', defaultContent: '-' },
                     { data: 'dueDate', defaultContent: '-' },
                     {
@@ -135,17 +135,18 @@
 
             loadTotals();
         });
-
         function loadTotals() {
+
+            let activeTab = $('#accountsTab .nav-link.active').attr('id');
+            let type = activeTab === 'customers-tab' ? 'Customer' : 'Supplier';
+
             $.ajax({
                 url: '@Url.Action("GetTotals", "Contacts")',
                 type: 'GET',
+                data: { type: type },   //  Must
                 success: function (data) {
                     $('#totalReceive').text('Rs. ' + (data.formattedReceive || '0'));
                     $('#totalGive').text('Rs. ' + (data.formattedGive || '0'));
-                },
-                error: function (xhr) {
-                    console.error('Totals failed:', xhr.status, xhr.responseText);
                 }
             });
         }

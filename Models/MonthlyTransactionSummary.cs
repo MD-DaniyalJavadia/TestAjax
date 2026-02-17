@@ -9,9 +9,9 @@ public partial class MonthlyTransactionSummary
 {
     public int? Year { get; set; }
 
-    public string MonthName { get; set; }
-
     public int? MonthNumber { get; set; }
+
+    public string MonthName { get; set; }
 
     public decimal? TotalGiven { get; set; }
 

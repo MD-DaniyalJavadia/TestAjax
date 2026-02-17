@@ -19,5 +19,7 @@ public partial class Transaction
 
     public DateTime? TransactionDate { get; set; }
 
+    public string PhotoFileName { get; set; }
+
     public virtual Contact Contact { get; set; }
 }

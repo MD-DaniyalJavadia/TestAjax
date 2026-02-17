@@ -32,6 +32,10 @@ build_property.EnableCodeStyleSeverity =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udGFjdHNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/TestAjax/Views/Contacts/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udGFjdHNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/TestAjax/Views/Contacts/index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udGFjdHNcaW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -54,6 +58,14 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/TestAjax/Views/Ledger/TransactionEntry.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGVkZ2VyXFRyYW5zYWN0aW9uRW50cnkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/TestAjax/Views/Ledger/_TransactionCanvasPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGVkZ2VyXF9UcmFuc2FjdGlvbkNhbnZhc1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/TestAjax/Views/Ledger/_TransactionEntryEdit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGVkZ2VyXF9UcmFuc2FjdGlvbkVudHJ5RWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/TestAjax/Views/Shared/Error.cshtml]

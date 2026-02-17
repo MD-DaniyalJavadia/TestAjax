@@ -21,6 +21,16 @@ public partial class UharContext : DbContext
 
     public virtual DbSet<TransactionSummary> TransactionSummaries { get; set; }
 
+    public virtual DbSet<VwActiveContactsWithBalance> VwActiveContactsWithBalances { get; set; }
+
+    public virtual DbSet<VwDashboardSummary> VwDashboardSummaries { get; set; }
+
+    public virtual DbSet<VwOverallBalance> VwOverallBalances { get; set; }
+
+    public virtual DbSet<VwTotalPayable> VwTotalPayables { get; set; }
+
+    public virtual DbSet<VwTotalReceivable> VwTotalReceivables { get; set; }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Contact>(entity =>
@@ -66,6 +76,7 @@ public partial class UharContext : DbContext
 
             entity.Property(e => e.Amount).HasColumnType("decimal(18, 2)");
             entity.Property(e => e.Details).HasMaxLength(500);
+            entity.Property(e => e.PhotoFileName).IsUnicode(false);
             entity.Property(e => e.TransactionDate).HasDefaultValueSql("(getdate())");
             entity.Property(e => e.Type)
                 .IsRequired()
@@ -83,10 +94,75 @@ public partial class UharContext : DbContext
                 .HasNoKey()
                 .ToView("TransactionSummary");
 
+            entity.Property(e => e.ContactType).HasMaxLength(20);
             entity.Property(e => e.MonthName).HasMaxLength(30);
             entity.Property(e => e.PartyName).HasMaxLength(150);
             entity.Property(e => e.TotalGiven).HasColumnType("decimal(38, 2)");
             entity.Property(e => e.TotalReceived).HasColumnType("decimal(38, 2)");
+        });
+
+        modelBuilder.Entity<VwActiveContactsWithBalance>(entity =>
+        {
+            entity
+                .HasNoKey()
+                .ToView("vw_ActiveContactsWithBalance");
+
+            entity.Property(e => e.Balance).HasColumnType("decimal(38, 2)");
+            entity.Property(e => e.ContactName)
+                .IsRequired()
+                .HasMaxLength(150);
+            entity.Property(e => e.ContactType)
+                .IsRequired()
+                .HasMaxLength(20);
+            entity.Property(e => e.CreatedDateFormatted).HasMaxLength(4000);
+            entity.Property(e => e.DueDate)
+                .IsRequired()
+                .HasMaxLength(1)
+                .IsUnicode(false);
+            entity.Property(e => e.LastTransactionDate).HasMaxLength(4000);
+            entity.Property(e => e.PhoneNumber)
+                .IsRequired()
+                .HasMaxLength(20);
+        });
+
+        modelBuilder.Entity<VwDashboardSummary>(entity =>
+        {
+            entity
+                .HasNoKey()
+                .ToView("vw_DashboardSummary");
+
+            entity.Property(e => e.BalanceAmount).HasColumnType("decimal(38, 2)");
+            entity.Property(e => e.TotalGiven).HasColumnType("decimal(38, 2)");
+            entity.Property(e => e.TotalReceived).HasColumnType("decimal(38, 2)");
+        });
+
+        modelBuilder.Entity<VwOverallBalance>(entity =>
+        {
+            entity
+                .HasNoKey()
+                .ToView("vw_OverallBalance");
+
+            entity.Property(e => e.NetBalance).HasColumnType("decimal(38, 2)");
+            entity.Property(e => e.TotalGiven).HasColumnType("decimal(38, 2)");
+            entity.Property(e => e.TotalReceived).HasColumnType("decimal(38, 2)");
+        });
+
+        modelBuilder.Entity<VwTotalPayable>(entity =>
+        {
+            entity
+                .HasNoKey()
+                .ToView("vw_TotalPayable");
+
+            entity.Property(e => e.TotalPayable).HasColumnType("decimal(38, 2)");
+        });
+
+        modelBuilder.Entity<VwTotalReceivable>(entity =>
+        {
+            entity
+                .HasNoKey()
+                .ToView("vw_TotalReceivable");
+
+            entity.Property(e => e.TotalReceivable).HasColumnType("decimal(38, 2)");
         });
 
         OnModelCreatingPartial(modelBuilder);

@@ -1,0 +1,224 @@
+﻿@model TestAjax.Models.Transaction
+
+@{
+    // Transaction type (Received / Given)
+    string transactionType = Model.Type ?? "Received";
+
+    // Current balance from ViewBag
+    decimal currentBalance = ViewBag.CurrentBalance != null ? (decimal)ViewBag.CurrentBalance : 0;
+
+    // Photo file URL
+    string photoUrl = !string.IsNullOrWhiteSpace(Model.PhotoFileName) ? Url.Content("~/uploads/receipts/" + Model.PhotoFileName) : "";
+}
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+<style>
+    .quick-amount button {
+        border-radius: 20px;
+        margin: 4px;
+    }
+
+    .photo-upload-box {
+        border: 2px dashed #ccc;
+        border-radius: 12px;
+        width: 150px;
+        height: 130px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        cursor: pointer;
+        overflow: hidden;
+        transition: 0.3s;
+        background-color: #fafafa;
+        position: relative;
+    }
+
+        .photo-upload-box:hover {
+            background-color: #f0f0f0;
+        }
+
+    .preview-img-inside {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: 1;
+    }
+
+    #removePhoto {
+        z-index: 10;
+    }
+
+    .hidden {
+        display: none !important;
+    }
+</style>
+
+<div class="page-inner">
+    <form asp-action="UpdateTransaction" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="Id" value="@Model.Id" />
+        <input type="hidden" name="ContactId" value="@Model.ContactId" />
+        <input type="hidden" id="typeInput" name="Type" value="@transactionType" />
+        <input type="hidden" name="ExistingPhotoFileName" value="@Model.PhotoFileName" />
+
+        <!-- BALANCE -->
+        <div class="mb-2 d-flex justify-content-between">
+            <label class="form-label">Amount</label>
+            <small class="text-muted">
+                Balance: Rs. @currentBalance.ToString("N0")
+            </small>
+        </div>
+
+        <!-- AMOUNT -->
+        <input type="number"
+               id="amountInput"
+               name="Amount"
+               class="form-control form-control-lg"
+               placeholder="Rs. 0"
+               value="@Model.Amount"
+               required />
+
+        <!-- QUICK AMOUNT -->
+        <div class="quick-amount mt-2">
+            <button type="button" class="btn btn-outline-primary btn-sm" onclick="addAmount(50)">+ 50</button>
+            <button type="button" class="btn btn-outline-primary btn-sm" onclick="addAmount(100)">+ 100</button>
+            <button type="button" class="btn btn-outline-primary btn-sm" onclick="addAmount(500)">+ 500</button>
+            <button type="button" class="btn btn-outline-primary btn-sm" onclick="addAmount(1000)">+ 1000</button>
+        </div>
+
+        <!-- DATE -->
+        <div class="mt-4">
+            <label class="form-label">Date</label>
+            <input type="text"
+                   id="transactionDate"
+                   name="TransactionDate"
+                   class="form-control"
+                   value="@(Model.TransactionDate?.ToString("yyyy-MM-dd") ?? "")"
+                   required />
+        </div>
+
+        <!-- DETAILS -->
+        <div class="mt-3">
+            <label class="form-label">Details</label>
+            <textarea name="Details" class="form-control" rows="3" placeholder="Add detailed note here...">@Model.Details</textarea>
+        </div>
+
+        <!-- PHOTO - FIXED VERSION -->
+        <div class="mt-3">
+            <label class="form-label">Add Photo</label>
+
+            <div id="uploadBox" class="photo-upload-box" onclick="document.getElementById('photoInput').click();">
+                <!-- Camera Icon (shown when no image) -->
+                <i id="cameraIcon" class="bi bi-camera fs-3 @(!string.IsNullOrEmpty(photoUrl) ? "hidden" : "")"></i>
+
+                <!-- Upload Text (shown when no image) -->
+                <small id="uploadText" class="@(!string.IsNullOrEmpty(photoUrl) ? "hidden" : "")">Add Photo</small>
+
+                <!-- Preview Image -->
+                <img id="previewImage" class="preview-img-inside @(string.IsNullOrEmpty(photoUrl) ? "hidden" : "")"
+                     src="@photoUrl" alt="Preview" />
+
+                <!-- Remove Button -->
+                <button type="button" id="removePhoto"
+                        class="btn btn-sm btn-danger position-absolute top-0 end-0 m-1 @(string.IsNullOrEmpty(photoUrl) ? "hidden" : "")"
+                        style="border-radius:50%; width:28px; height:28px; padding:0;">
+                    ×
+                </button>
+            </div>
+
+            <input type="file" id="photoInput" name="photo" accept="image/*" hidden />
+            <small class="text-muted d-block mt-1">Leave empty to keep existing photo</small>
+        </div>
+
+        <!-- SUBMIT -->
+        <div class="mt-4 text-end">
+            <button type="submit" class="btn btn-primary px-4">SAVE</button>
+        </div>
+    </form>
+</div>
+
+<script>
+    function addAmount(amount) {
+        const amountInput = document.getElementById('amountInput');
+        const currentValue = parseFloat(amountInput.value) || 0;
+        amountInput.value = currentValue + amount;
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        // Flatpickr for date
+        flatpickr("#transactionDate", {
+            dateFormat: "Y-m-d",
+            defaultDate: "@(Model.TransactionDate?.ToString("yyyy-MM-dd") ?? DateTime.Today.ToString("yyyy-MM-dd"))"
+        });
+
+        // PHOTO LOGIC - COMPLETELY FIXED
+        const photoInput = document.getElementById("photoInput");
+        const preview = document.getElementById("previewImage");
+        const removeBtn = document.getElementById("removePhoto");
+        const cameraIcon = document.getElementById("cameraIcon");
+        const uploadText = document.getElementById("uploadText");
+
+        // Helper function to show/hide elements
+        function showImageMode(show) {
+            if (show) {
+                preview.classList.remove('hidden');
+                removeBtn.classList.remove('hidden');
+                cameraIcon.classList.add('hidden');
+                uploadText.classList.add('hidden');
+            } else {
+                preview.classList.add('hidden');
+                removeBtn.classList.add('hidden');
+                cameraIcon.classList.remove('hidden');
+                uploadText.classList.remove('hidden');
+            }
+        }
+
+        // Check if there's an existing photo on page load
+        if (preview.src && preview.src !== window.location.href && !preview.src.endsWith('/') && preview.src.trim() !== '') {
+            showImageMode(true);
+        } else {
+            showImageMode(false);
+        }
+
+        // Photo input change event - for NEW image selection
+        photoInput.addEventListener("change", function (e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (ev) {
+                    // Update preview with new image
+                    preview.src = ev.target.result;
+                    showImageMode(true);
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Remove button click event
+        removeBtn.addEventListener("click", function (e) {
+            e.stopPropagation(); // Prevent parent click event
+            e.preventDefault();
+
+            // Clear everything
+            preview.src = '';
+            photoInput.value = ''; // Reset file input
+            showImageMode(false);
+        });
+
+        // Prevent uploadBox click when clicking remove button
+        removeBtn.addEventListener("mousedown", function (e) {
+            e.stopPropagation();
+        });
+
+        // Agar user ne photo select kiya aur phir remove kar diya, to reset properly
+        photoInput.addEventListener('click', function(e) {
+            e.stopPropagation();
+        });
+    });
+</script>
